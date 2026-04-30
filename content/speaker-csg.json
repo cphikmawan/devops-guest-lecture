@@ -1,0 +1,30 @@
+{
+  "_instruksi": "Isi semua field di bawah ini. Hapus baris '_instruksi' ini setelah selesai. Jalankan: python3 generate.py",
+
+  "A_NAME": "Nama Lengkap Kamu",
+  "A_CONTACT": "linkedin.com/in/username  |  email@gmail.com",
+
+  "A_YEAR_1": "2018",
+  "A_MAJOR": "Teknik Informatika",
+
+  "A_YEAR_2": "2019",
+  "A_LINUX_STORY": "Pertama kali otak-atik Linux di lab kampus, langsung ketagihan",
+
+  "A_YEAR_3": "2020",
+  "A_INTERN_STORY": "Internship di startup, deploy pertama pakai FTP manual",
+
+  "A_YEAR_4": "2021",
+  "A_ROLE_JOIN": "Junior DevOps Engineer",
+
+  "A_ROLE_NOW": "DevOps Engineer, handle infra untuk 5 client sekaligus",
+
+  "A_AHA_MOMENT": "Pertama kali pipeline CI/CD jalan otomatis jam 2 pagi, tidak perlu SSH manual lagi",
+
+  "A_DAILY_1": "Review infrastructure change request dari client",
+  "A_DAILY_2": "Monitoring dan optimasi biaya cloud bulanan",
+  "A_SPECIFIC": "Presentasi technical proposal ke client baru",
+  "A_STACK": "Azure, Terraform, Ansible, Jenkins, Docker, Kubernetes",
+
+  "A_INCIDENT": "Suatu hari Terraform apply di jam sibuk, satu security group terhapus. Semua traffic ke prod terblokir 20 menit sebelum ketahuan. Dari situ kita buat mandatory: semua terraform plan harus di-review dua orang sebelum apply ke production.",
+  "A_LESSON": "Plan dulu, apply kemudian. Selalu ada reviewer kedua untuk production changes."
+}

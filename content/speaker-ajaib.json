@@ -1,0 +1,29 @@
+{
+  "_instruksi": "Isi semua field di bawah ini. Hapus baris '_instruksi' ini setelah selesai. Jalankan: python3 generate.py",
+
+  "B_NAME": "Nama Lengkap Kamu",
+  "B_CONTACT": "linkedin.com/in/username  |  email@gmail.com",
+
+  "B_YEAR_1": "2017",
+  "B_MAJOR": "Sistem Informasi",
+
+  "B_YEAR_2": "2018",
+  "B_DEVOPS_FROM": "tugas akhir yang butuh deploy server sendiri",
+
+  "B_YEAR_3": "2019",
+  "B_INTERN_STORY": "Magang di fintech, kenalan pertama dengan Docker dan CI/CD",
+
+  "B_YEAR_4": "2021",
+  "B_ROLE_JOIN": "Site Reliability Engineer",
+
+  "B_ROLE_NOW": "DevOps Engineer, fokus reliability dan deployment pipeline",
+
+  "B_CHAOS_MOMENT": "Database master crash 5 menit sebelum market open, harus failover manual sambil Slack meledak dari semua tim",
+
+  "B_DAILY_1": "Deploy microservices ke staging dan production",
+  "B_SPECIFIC": "Audit kesiapan sistem sebelum event market besar",
+  "B_STACK": "GCP, Kubernetes, Helm, ArgoCD, Prometheus, Grafana",
+
+  "B_INCIDENT": "Saat salah satu bank besar IPO, traffic naik 10x dari prediksi dalam 3 menit. Auto-scaling tidak cukup cepat. Order page timeout, user panik. Kita manual scale sambil komunikasi ke tim bisnis setiap 5 menit. Selesai dalam 18 menit tapi rasanya satu jam.",
+  "B_LESSON": "Stress test harus pakai angka yang lebih tinggi dari prediksi. Buffer 2x tidak cukup, minimal 5x untuk event besar."
+}
