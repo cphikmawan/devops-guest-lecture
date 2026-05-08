@@ -1007,27 +1007,39 @@
 ══════════════════════════════════════ -->
 <section>
   <h2>Evolusi DevOps</h2>
-  <div class="htimeline">
-    <div class="htimeline-item" data-year="2009">
-      <div class="htl-content">DevOps lahir<br><span class="muted">Flickr "10 deploys/day"</span></div>
+  <div style="display:flex; flex-direction:column; gap:0.5em; margin:0.8em 0;">
+    <div style="display:flex; gap:0.5em;">
+      <div style="flex:1; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:0.5em 0.6em; text-align:center; font-size:0.7em;">
+        <div style="background:var(--blue); color:#000; font-weight:700; border-radius:999px; padding:0.1em 0.6em; display:inline-block; margin-bottom:0.3em;">2009</div>
+        <div style="font-weight:600;">DevOps lahir</div><div class="muted" style="font-size:0.88em;">Flickr "10 deploys/day"</div>
+      </div>
+      <div style="flex:1; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:0.5em 0.6em; text-align:center; font-size:0.7em;">
+        <div style="background:var(--blue); color:#000; font-weight:700; border-radius:999px; padding:0.1em 0.6em; display:inline-block; margin-bottom:0.3em;">2013</div>
+        <div style="font-weight:600;">Docker</div><div class="muted" style="font-size:0.88em;">Container revolution</div>
+      </div>
+      <div style="flex:1; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:0.5em 0.6em; text-align:center; font-size:0.7em;">
+        <div style="background:var(--blue); color:#000; font-weight:700; border-radius:999px; padding:0.1em 0.6em; display:inline-block; margin-bottom:0.3em;">2015</div>
+        <div style="font-weight:600;">Kubernetes</div><div class="muted" style="font-size:0.88em;">Orchestration era</div>
+      </div>
+      <div style="flex:1; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:0.5em 0.6em; text-align:center; font-size:0.7em;">
+        <div style="background:var(--blue); color:#000; font-weight:700; border-radius:999px; padding:0.1em 0.6em; display:inline-block; margin-bottom:0.3em;">2018</div>
+        <div style="font-weight:600;">GitOps + IaC</div><div class="muted" style="font-size:0.88em;">mainstream</div>
+      </div>
     </div>
-    <div class="htimeline-item" data-year="2013">
-      <div class="htl-content">Docker<br><span class="muted">Container revolution</span></div>
-    </div>
-    <div class="htimeline-item" data-year="2015">
-      <div class="htl-content">Kubernetes<br><span class="muted">Orchestration era</span></div>
-    </div>
-    <div class="htimeline-item" data-year="2018">
-      <div class="htl-content">GitOps + IaC<br><span class="muted">mainstream</span></div>
-    </div>
-    <div class="htimeline-item" data-year="2022">
-      <div class="htl-content">ChatGPT<br><span class="muted">AI masuk industri</span></div>
-    </div>
-    <div class="htimeline-item" data-year="2024">
-      <div class="htl-content">AI Agents<br><span class="muted">automate toil</span></div>
-    </div>
-    <div class="htimeline-item" data-year="2026">
-      <div class="htl-content" style="border-color: var(--blue);">Platform Eng<br><span class="blue">+ AI = self-service</span></div>
+    <div style="display:flex; gap:0.5em;">
+      <div style="flex:1; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:0.5em 0.6em; text-align:center; font-size:0.7em;">
+        <div style="background:var(--blue); color:#000; font-weight:700; border-radius:999px; padding:0.1em 0.6em; display:inline-block; margin-bottom:0.3em;">2022</div>
+        <div style="font-weight:600;">ChatGPT</div><div class="muted" style="font-size:0.88em;">AI masuk industri</div>
+      </div>
+      <div style="flex:1; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:0.5em 0.6em; text-align:center; font-size:0.7em;">
+        <div style="background:var(--blue); color:#000; font-weight:700; border-radius:999px; padding:0.1em 0.6em; display:inline-block; margin-bottom:0.3em;">2024</div>
+        <div style="font-weight:600;">AI Agents</div><div class="muted" style="font-size:0.88em;">automate toil</div>
+      </div>
+      <div style="flex:1; background:var(--surface); border:1px solid rgba(88,166,255,0.5); border-radius:8px; padding:0.5em 0.6em; text-align:center; font-size:0.7em;">
+        <div style="background:var(--blue); color:#000; font-weight:700; border-radius:999px; padding:0.1em 0.6em; display:inline-block; margin-bottom:0.3em;">2026</div>
+        <div style="font-weight:600;" class="blue">Platform Eng</div><div class="blue" style="font-size:0.88em;">+ AI = self-service</div>
+      </div>
+      <div style="flex:1; opacity:0;"></div>
     </div>
   </div>
   <div class="callout" style="margin-top:0.8em;">Tren: makin abstrak, makin otomatis, makin cepat. Dan makin dibutuhkan orang yang paham fundamentalnya</div>
@@ -1281,20 +1293,20 @@
      SLIDE — PENUTUP
 ══════════════════════════════════════ -->
 <section class="cover">
-  <h1 style="font-size:1.8em;">3 Hal yang Semoga Kalian Bawa Pulang</h1>
-  <div style="text-align:left; max-width:600px; margin:1.2em auto 0;">
-    <div class="card accent-blue" style="margin-bottom:0.6em; font-size:0.85em;">
+  <h1 style="font-size:1.4em;">3 Hal yang Semoga Kalian Bawa Pulang</h1>
+  <div style="text-align:left; max-width:600px; margin:0.6em auto 0;">
+    <div class="card accent-blue" style="margin-bottom:0.4em; font-size:0.78em;">
       <strong class="blue">1.</strong> DevOps bukan tentang tools, tapi tentang <strong>mindset kolaborasi &amp; automation</strong>
     </div>
-    <div class="card accent-green" style="margin-bottom:0.6em; font-size:0.85em;">
+    <div class="card accent-green" style="margin-bottom:0.4em; font-size:0.78em;">
       <strong class="green">2.</strong> Learning never stops. Tapi <strong>mulai sekarang</strong>, dari project yang kalian punya
     </div>
-    <div class="card accent-purple" style="font-size:0.85em;">
+    <div class="card accent-purple" style="font-size:0.78em;">
       <strong class="purple">3.</strong> AI adalah <strong>multiplier</strong>, bukan pengganti. Yang mau adapt, yang survive.
     </div>
   </div>
-  <hr class="sep" style="margin:1.2em auto; max-width:400px;">
-  <div class="speakers" style="margin-top:0.8em;">
+  <hr class="sep" style="margin:0.6em auto; max-width:400px;">
+  <div class="speakers" style="margin-top:0.4em;">
     <div class="speaker-card">
       <div class="role">LinkedIn / Email</div>
       <div class="name">{{A_NAME}}</div>
@@ -1306,7 +1318,7 @@
       <div class="company">{{B_CONTACT}}</div>
     </div>
   </div>
-  <p class="muted" style="font-size:0.65em; margin-top:1em;">"Kalau stuck, DM kami. Kita komunitas, bukan kompetisi."</p>
+  <p class="muted" style="font-size:0.65em; margin-top:0.5em;">"Kalau stuck, DM kami. Kita komunitas, bukan kompetisi."</p>
 </section>
 
 </div>
