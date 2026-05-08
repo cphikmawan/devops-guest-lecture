@@ -1,29 +1,28 @@
 {
-  "_instruksi": "Isi semua field di bawah ini. Hapus baris '_instruksi' ini setelah selesai. Jalankan: python3 generate.py",
+  "B_NAME": "Cahya P. Hikmawan",
+  "B_CONTACT": "linkedin.com/in/cphikmawan  |  cp.hikmawan@gmail.com",
 
-  "B_NAME": "Nama Lengkap Kamu",
-  "B_CONTACT": "linkedin.com/in/username  |  email@gmail.com",
-
-  "B_YEAR_1": "2017",
-  "B_MAJOR": "Sistem Informasi",
+  "B_YEAR_1": "2015",
+  "B_MAJOR": "Teknologi Informasi",
 
   "B_YEAR_2": "2018",
-  "B_DEVOPS_FROM": "tugas akhir yang butuh deploy server sendiri",
+  "B_DEVOPS_FROM": "Tugas Akhir tentang load testing web service menggunakan Headless Browser dan Docker",
 
   "B_YEAR_3": "2019",
-  "B_INTERN_STORY": "Magang di fintech, kenalan pertama dengan Docker dan CI/CD",
+  "B_INTERN_STORY": "Fullstack Engineer di DPTSI ITS, pertama kali deploy aplikasi ke DigitalOcean",
 
-  "B_YEAR_4": "2021",
+  "B_YEAR_4": "2022",
   "B_ROLE_JOIN": "Site Reliability Engineer",
 
-  "B_ROLE_NOW": "DevOps Engineer, fokus reliability dan deployment pipeline",
+  "B_ROLE_NOW": "Senior Site Reliability Engineer di Ajaib Group, fokus pada platform reliability, GitOps, dan cloud cost optimization di GCP",
 
-  "B_CHAOS_MOMENT": "Database master crash 5 menit sebelum market open, harus failover manual sambil Slack meledak dari semua tim",
+  "B_CHAOS_MOMENT": "GKE tiba-tiba melakukan forced auto-upgrade dari versi 1.32 ke 1.34—beberapa workload langsung crash karena ada breaking changes yang tidak sempat divalidasi sebelumnya",
 
-  "B_DAILY_1": "Deploy microservices ke staging dan production",
-  "B_SPECIFIC": "Audit kesiapan sistem sebelum event market besar",
-  "B_STACK": "GCP, Kubernetes, Helm, ArgoCD, Prometheus, Grafana",
+  "B_DAILY_1": "Deploy dan release management microservices ke staging dan production",
+  "B_SPECIFIC": "Audit kesiapan sistem sebelum event market besar seperti IPO atau stock rush",
+  "B_STACK": "GCP, Kubernetes, ArgoCD, Terraform, Helm, VictoriaMetrics, Grafana, Loki, Prometheus",
 
-  "B_INCIDENT": "Saat salah satu bank besar IPO, traffic naik 10x dari prediksi dalam 3 menit. Auto-scaling tidak cukup cepat. Order page timeout, user panik. Kita manual scale sambil komunikasi ke tim bisnis setiap 5 menit. Selesai dalam 18 menit tapi rasanya satu jam.",
-  "B_LESSON": "Stress test harus pakai angka yang lebih tinggi dari prediksi. Buffer 2x tidak cukup, minimal 5x untuk event besar."
+  "B_INCIDENT": "Sebuah typo konfigurasi pada automation job k6 menyebabkan proses tersebut mencoba melakukan SSH ke server di China. Sistem deteksi ancaman langsung memflagging aktivitas ini sebagai SSH Exfiltration. Akar masalahnya: perubahan dilakukan secara manual tanpa melalui proses code review, sehingga tidak ada yang menangkap kesalahan tersebut.",
+
+  "B_LESSON": "Sekecil apapun perubahannya, selalu harus melalui proses review. Otomasi bukan hanya soal efisiensi, tapi juga soal keamanan dan auditabilitas—perubahan manual yang tidak terdokumentasi adalah risiko yang menunggu waktu."
 }

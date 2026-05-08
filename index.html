@@ -1,11 +1,1336 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=slides.html">
-  <title>DevOps Guest Lecture</title>
+  <meta name="viewport" content="width=1280, initial-scale=1.0">
+  <title>Life as a DevOps Engineer: CSG & Ajaib</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <style>
+    :root {
+      --blue:    #58A6FF;
+      --green:   #3FB950;
+      --red:     #FF7B72;
+      --yellow:  #E3B341;
+      --purple:  #BC8CFF;
+      --muted:   #8B949E;
+      --bg:      #0D1117;
+      --surface: #161B22;
+      --border:  #30363D;
+      --text:    #E6EDF3;
+    }
+
+    .reveal {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 30px;
+    }
+
+    .reveal .slides section {
+      text-align: left;
+      box-sizing: border-box;
+      overflow: hidden;
+      height: 100%;
+      padding: 30px 50px;
+    }
+
+    /* ── Cover ── */
+    .cover { text-align: center !important; }
+    .cover h1 {
+      font-size: 2.2em;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+      margin-bottom: 0.3em;
+    }
+    .cover .subtitle {
+      color: var(--muted);
+      font-size: 1em;
+      margin-bottom: 1.5em;
+    }
+    .cover .speakers {
+      display: flex;
+      justify-content: center;
+      gap: 3em;
+      margin-top: 1em;
+    }
+    .speaker-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1em 1.5em;
+      text-align: center;
+      min-width: 160px;
+    }
+    .speaker-card .role { color: var(--blue); font-size: 0.7em; }
+    .speaker-card .name { font-weight: 700; font-size: 0.9em; margin: 0.3em 0; }
+    .speaker-card .company { color: var(--green); font-size: 0.75em; }
+
+    /* ── Agenda ── */
+    .agenda-list { list-style: none; padding: 0; margin: 0; }
+    .agenda-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.8em;
+      padding: 0.6em 1em;
+      margin: 0.4em 0;
+      background: var(--surface);
+      border-left: 3px solid var(--border);
+      border-radius: 0 8px 8px 0;
+      font-size: 0.85em;
+      transition: border-color 0.3s;
+    }
+    .agenda-list li .num {
+      background: var(--blue);
+      color: #000;
+      font-weight: 700;
+      border-radius: 50%;
+      width: 1.5em;
+      height: 1.5em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9em;
+      flex-shrink: 0;
+    }
+
+    /* ── Section header ── */
+    .section-header {
+      text-align: center !important;
+    }
+    .section-header h2 {
+      font-size: 2.5em;
+      color: var(--blue);
+    }
+    .section-header .section-sub {
+      color: var(--muted);
+      font-size: 0.9em;
+    }
+
+    /* ── Timeline ── */
+    .timeline {
+      position: relative;
+      padding-left: 2em;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0.6em;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 1em;
+      padding: 0.6em 0.8em;
+      background: var(--surface);
+      border-radius: 8px;
+      font-size: 0.78em;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.5em;
+      top: 0.9em;
+      width: 0.7em;
+      height: 0.7em;
+      border-radius: 50%;
+      background: var(--green);
+      border: 2px solid var(--bg);
+    }
+    .timeline-item .year {
+      color: var(--yellow);
+      font-weight: 700;
+      font-size: 0.85em;
+    }
+
+    /* ── Compare table ── */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.72em;
+    }
+    .compare-table th {
+      background: var(--surface);
+      padding: 0.7em 1em;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+    .compare-table th:nth-child(2) { color: var(--blue); }
+    .compare-table th:nth-child(3) { color: var(--green); }
+    .compare-table td {
+      padding: 0.6em 1em;
+      border: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .compare-table tr:nth-child(even) td { background: var(--surface); }
+    .compare-table td:first-child { color: var(--muted); }
+
+    /* ── Pill tags ── */
+    .pill {
+      display: inline-block;
+      padding: 0.2em 0.7em;
+      border-radius: 999px;
+      font-size: 0.72em;
+      font-weight: 600;
+      margin: 0.15em;
+    }
+    .pill-blue   { background: rgba(88,166,255,0.15); color: var(--blue); border: 1px solid rgba(88,166,255,0.3); }
+    .pill-green  { background: rgba(63,185,80,0.15);  color: var(--green); border: 1px solid rgba(63,185,80,0.3); }
+    .pill-red    { background: rgba(255,123,114,0.15);color: var(--red); border: 1px solid rgba(255,123,114,0.3); }
+    .pill-yellow { background: rgba(227,179,65,0.15); color: var(--yellow); border: 1px solid rgba(227,179,65,0.3); }
+    .pill-purple { background: rgba(188,140,255,0.15);color: var(--purple); border: 1px solid rgba(188,140,255,0.3); }
+
+    /* ── Cards grid ── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.8em;
+    }
+    .card-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.8em;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.9em 1em;
+      font-size: 0.78em;
+    }
+    .card h4 { margin: 0 0 0.5em 0; font-size: 0.95em; }
+    .card.accent-blue  { border-left: 3px solid var(--blue); }
+    .card.accent-green { border-left: 3px solid var(--green); }
+    .card.accent-red   { border-left: 3px solid var(--red); }
+    .card.accent-yellow { border-left: 3px solid var(--yellow); }
+    .card.accent-purple { border-left: 3px solid var(--purple); }
+
+    /* ── Before/After ── */
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1em;
+    }
+    .before-side, .after-side {
+      background: var(--surface);
+      border-radius: 10px;
+      padding: 1em;
+      font-size: 0.76em;
+    }
+    .before-side { border-top: 3px solid var(--red); }
+    .after-side  { border-top: 3px solid var(--green); }
+    .before-side h4 { color: var(--red); margin: 0 0 0.6em 0; }
+    .after-side  h4 { color: var(--green); margin: 0 0 0.6em 0; }
+
+    /* ── Checklist ── */
+    .checklist { list-style: none; padding: 0; margin: 0; }
+    .checklist li {
+      padding: 0.3em 0;
+      font-size: 0.8em;
+      display: flex;
+      gap: 0.5em;
+    }
+    .checklist li::before { content: '▸'; color: var(--blue); }
+    .checklist.done li::before { content: '✓'; color: var(--green); }
+    .checklist.warn li::before { content: '✕'; color: var(--red); }
+
+    /* ── Callout ── */
+    .callout {
+      background: rgba(88,166,255,0.08);
+      border-left: 3px solid var(--blue);
+      border-radius: 0 8px 8px 0;
+      padding: 0.7em 1em;
+      margin: 0.8em 0;
+      font-size: 0.8em;
+      font-style: italic;
+      color: #ccc;
+    }
+
+    /* ── Stat boxes ── */
+    .stat-row {
+      display: flex;
+      gap: 0.8em;
+      margin: 0.6em 0;
+    }
+    .stat-box {
+      flex: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.8em;
+      text-align: center;
+    }
+    .stat-box .stat-num { font-size: 1.8em; font-weight: 700; color: var(--blue); line-height: 1; }
+    .stat-box .stat-label { font-size: 0.65em; color: var(--muted); margin-top: 0.3em; }
+
+    /* ── Timeline horizontal ── */
+    .htimeline {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      margin: 1em 0;
+      overflow-x: auto;
+    }
+    .htimeline-item {
+      flex: 1;
+      text-align: center;
+      position: relative;
+      font-size: 0.68em;
+      padding-top: 2em;
+    }
+    .htimeline-item::before {
+      content: attr(data-year);
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--blue);
+      color: #000;
+      font-weight: 700;
+      padding: 0.15em 0.5em;
+      border-radius: 999px;
+      font-size: 0.85em;
+      white-space: nowrap;
+    }
+    .htimeline-item::after {
+      content: '';
+      position: absolute;
+      top: 1.3em;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--border);
+    }
+    .htimeline-item:last-child::after { right: 50%; }
+    .htimeline-item:first-child::after { left: 50%; }
+    .htimeline-item .htl-content {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.5em;
+      margin: 0 0.3em;
+      min-height: 3.5em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── Quiz ── */
+    .quiz-q {
+      font-size: 1em;
+      font-weight: 700;
+      margin-bottom: 0.8em;
+      color: var(--yellow);
+    }
+    .quiz-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6em;
+    }
+    .quiz-opt {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.7em 1em;
+      font-size: 0.8em;
+      cursor: pointer;
+    }
+    .quiz-opt.correct { border-color: var(--green); background: rgba(63,185,80,0.1); color: var(--green); }
+    .quiz-opt.wrong   { border-color: var(--red);   background: rgba(255,123,114,0.1); color: var(--red); }
+
+    /* ── General helpers ── */
+    .reveal h2 { color: var(--text); font-size: 1.3em; margin-bottom: 0.6em; }
+    .reveal h3 { color: var(--blue); font-size: 1em; margin-bottom: 0.5em; }
+    .reveal p  { font-size: 0.82em; line-height: 1.6; margin: 0.4em 0; }
+    .blue   { color: var(--blue); }
+    .green  { color: var(--green); }
+    .red    { color: var(--red); }
+    .yellow { color: var(--yellow); }
+    .purple { color: var(--purple); }
+    .muted  { color: var(--muted); }
+    .bold   { font-weight: 700; }
+    .center { text-align: center !important; }
+    .big    { font-size: 1.4em; font-weight: 700; }
+    .mono   { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
+
+    .reveal pre { font-size: 0.65em; border-radius: 8px; }
+    .reveal code { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
+
+    .reveal .progress { color: var(--blue); }
+    .reveal .controls { color: var(--blue); }
+
+    .sep { border: none; border-top: 1px solid var(--border); margin: 0.6em 0; }
+
+    /* Speaker fill indicator */
+    .fill-me {
+      display: inline-block;
+      background: rgba(227,179,65,0.15);
+      border: 1px dashed var(--yellow);
+      border-radius: 6px;
+      padding: 0.1em 0.5em;
+      color: var(--yellow);
+      font-size: 0.8em;
+    }
+
+    /* project badge */
+    .proj-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.3em 0.7em;
+      font-size: 0.75em;
+      margin-bottom: 0.5em;
+    }
+    .proj-badge .num {
+      background: var(--blue);
+      color: #000;
+      font-weight: 700;
+      border-radius: 4px;
+      padding: 0.1em 0.4em;
+    }
+  </style>
 </head>
 <body>
-  <a href="slides.html">Redirect ke slides...</a>
+<div class="reveal">
+<div class="slides">
+
+<!-- ══════════════════════════════════════
+     SLIDE 1 — COVER
+══════════════════════════════════════ -->
+<section class="cover">
+  <p class="mono muted" style="font-size:0.7em; margin-bottom:0.5em;">$ whoami</p>
+  <h1>Life as a DevOps Engineer</h1>
+  <p class="subtitle">CSG (IT Consultant) &nbsp;⟷&nbsp; Ajaib (Fintech)</p>
+  <hr class="sep">
+  <div class="speakers">
+    <div class="speaker-card">
+      <div class="role">DevOps Engineer</div>
+      <div class="name">Nama Lengkap Kamu</div>
+      <div class="company">CSG</div>
+    </div>
+    <div class="speaker-card">
+      <div class="role">DevOps Engineer</div>
+      <div class="name">Cahya P. Hikmawan</div>
+      <div class="company">Ajaib</div>
+    </div>
+  </div>
+  <p class="muted" style="font-size:0.6em; margin-top:1.2em;">Guest Lecture · Teknik Informatika · 2026</p>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 2 — AGENDA
+══════════════════════════════════════ -->
+<section>
+  <h2>Agenda</h2>
+  <ul class="agenda-list">
+    <li><span class="num">1</span> Perjalanan Karir, dari kuliah sampai sekarang</li>
+    <li><span class="num">2</span> Daily Life di CSG &amp; Ajaib</li>
+    <li><span class="num">3</span> Review Mini Project, konteks dunia nyata</li>
+    <li><span class="num">4</span> DevOps Dulu vs Sekarang, era AI</li>
+    <li><span class="num">5</span> Prospek Karir DevOps ke Depan</li>
+    <li><span class="num">6</span> Q&amp;A</li>
+  </ul>
+  <div class="callout" style="margin-top:1em;">
+    "Ini bukan kuliah. Ini cerita. Interupsi kapan aja." 😄
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SECTION BREAK — PERJALANAN
+══════════════════════════════════════ -->
+<section class="section-header">
+  <p class="muted mono" style="font-size:0.7em;">01</p>
+  <h2>Perjalanan Karir</h2>
+  <p class="section-sub">Dari bangku kuliah sampai production incident</p>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE — TIMELINE PEMATERI A
+══════════════════════════════════════ -->
+<section>
+  <h2>Perjalanan <span class="blue">Pemateri A</span> di CSG</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <span class="year">2018</span>
+      <span style="font-size:0.9em; margin-left:0.5em;">Mulai kuliah, jurusan Teknik Informatika</span>
+    </div>
+    <div class="timeline-item">
+      <span class="year">2019</span>
+      <span style="font-size:0.9em; margin-left:0.5em;">Pertama kali otak-atik Linux di lab kampus, langsung ketagihan</span>
+    </div>
+    <div class="timeline-item">
+      <span class="year">2020</span>
+      <span style="font-size:0.9em; margin-left:0.5em;">Internship / project pertama: Internship di startup, deploy pertama pakai FTP manual</span>
+    </div>
+    <div class="timeline-item">
+      <span class="year">2021</span>
+      <span style="font-size:0.9em; margin-left:0.5em;">Bergabung <span class="blue bold">CSG</span> sebagai Junior DevOps Engineer</span>
+    </div>
+    <div class="timeline-item" style="border-left: 2px solid var(--blue);">
+      <span class="year" style="color:var(--blue);">Now</span>
+      <span style="font-size:0.9em; margin-left:0.5em;">Role sekarang: DevOps Engineer, handle infra untuk 5 client sekaligus</span>
+    </div>
+  </div>
+  <div class="callout">"Aha moment pertama: Pertama kali pipeline CI/CD jalan otomatis jam 2 pagi, tidak perlu SSH manual lagi"</div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE — TIMELINE PEMATERI B
+══════════════════════════════════════ -->
+<section>
+  <h2>Perjalanan <span class="green">Pemateri B</span> di Ajaib</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <span class="year">2018</span>
+      <span style="font-size:0.9em; margin-left:0.5em;">Mulai kuliah, jurusan Teknik Informatika</span>
+    </div>
+    <div class="timeline-item">
+      <span class="year">2018</span>
+      <span style="font-size:0.9em; margin-left:0.5em;">Pertama kali kenal DevOps, dari Tugas Akhir tentang load testing web service menggunakan Headless Browser dan Docker</span>
+    </div>
+    <div class="timeline-item">
+      <span class="year">2020</span>
+      <span style="font-size:0.9em; margin-left:0.5em;">Internship / project pertama: Internship di startup, deploy pertama pakai FTP manual</span>
+    </div>
+    <div class="timeline-item">
+      <span class="year">2022</span>
+      <span style="font-size:0.9em; margin-left:0.5em;">Bergabung <span class="green bold">Ajaib</span> sebagai Site Reliability Engineer</span>
+    </div>
+    <div class="timeline-item" style="border-left: 2px solid var(--green);">
+      <span class="year" style="color:var(--green);">Now</span>
+      <span style="font-size:0.9em; margin-left:0.5em;">Role sekarang: Senior Site Reliability Engineer di Ajaib Group, fokus pada platform reliability, GitOps, dan cloud cost optimization di GCP</span>
+    </div>
+  </div>
+  <div class="callout">"Chaos moment paling memorable: GKE tiba-tiba melakukan forced auto-upgrade dari versi 1.32 ke 1.34—beberapa workload langsung crash karena ada breaking changes yang tidak sempat divalidasi sebelumnya"</div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE — APA ITU DEVOPS
+══════════════════════════════════════ -->
+<section>
+  <h2>Apa itu <span class="blue">DevOps</span>?</h2>
+  <p class="muted" style="font-size:0.75em;">Spoiler: bukan cuma hafal perintah docker</p>
+  <div class="card-grid" style="margin-top:0.8em;">
+    <div class="card accent-blue">
+      <h4>🤝 Culture</h4>
+      <p>Dev & Ops bekerja <strong>bersama</strong>, bukan saling lempar tanggung jawab. Shared ownership atas delivery & reliability.</p>
+    </div>
+    <div class="card accent-green">
+      <h4>⚙️ Automation</h4>
+      <p>Apapun yang dilakukan >1x harus diotomasi. CI/CD, IaC, CaC. Bukan manual SSH ke server prod.</p>
+    </div>
+    <div class="card accent-yellow">
+      <h4>📊 Measurement</h4>
+      <p>Kalau tidak bisa diukur, tidak bisa diperbaiki. SLO, error rate, latency. Semuanya harus termonitor.</p>
+    </div>
+    <div class="card accent-purple">
+      <h4>🔄 Continuous Loop</h4>
+      <p>Build → Test → Deploy → Monitor → Fix → ulang. Feedback loop yang cepat = rilis yang lebih aman.</p>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:0.7em;">"DevOps engineer yang baik membuat <em>dirinya sendiri</em> tidak dibutuhkan, karena semuanya sudah terotomasi."</div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE — REALITA VS EKSPEKTASI
+══════════════════════════════════════ -->
+<section>
+  <h2>Realita <span class="red">vs</span> Ekspektasi</h2>
+  <div class="before-after">
+    <div class="before-side">
+      <h4>❌ Ekspektasi saat kuliah</h4>
+      <ul class="checklist warn">
+        <li>Semua teori kuliah langsung terpakai</li>
+        <li>Langsung jadi senior engineer</li>
+        <li>Hafal tools = punya skill</li>
+        <li>Sertifikasi = garansi keterima kerja</li>
+        <li>Coding terus sepanjang hari</li>
+      </ul>
+    </div>
+    <div class="after-side">
+      <h4>✅ Realita di lapangan</h4>
+      <ul class="checklist done">
+        <li>80% learning on the job</li>
+        <li>3–6 bulan baru benar-benar "ngerti flow"</li>
+        <li>Problem-solving > tool knowledge</li>
+        <li>Portfolio > tumpukan sertifikat</li>
+        <li>Meeting, docs, dan debugging sama banyaknya</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">"Yang bikin kamu diterima: kemampuan belajar cepat, bukan IPK."</div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SECTION BREAK — DAILY LIFE
+══════════════════════════════════════ -->
+<section class="section-header">
+  <p class="muted mono" style="font-size:0.7em;">02</p>
+  <h2>Daily Life</h2>
+  <p class="section-sub">CSG (IT Consultant) &nbsp;⟷&nbsp; Ajaib (Fintech)</p>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE — COMPANY OVERVIEW
+══════════════════════════════════════ -->
+<section>
+  <h2>Dua Dunia yang Berbeda</h2>
+  <table class="compare-table">
+    <tr>
+      <th>Dimensi</th>
+      <th>CSG (IT Consultant)</th>
+      <th>Ajaib (Fintech)</th>
+    </tr>
+    <tr>
+      <td>Model bisnis</td>
+      <td>Multi-client, project-based</td>
+      <td>Single product, B2C</td>
+    </tr>
+    <tr>
+      <td>Scope kerja</td>
+      <td>Luas, beragam per project</td>
+      <td>Dalam, domain finansial</td>
+    </tr>
+    <tr>
+      <td>Regulasi</td>
+      <td>Bervariasi per client</td>
+      <td>OJK / BI compliance</td>
+    </tr>
+    <tr>
+      <td>On-call</td>
+      <td>Tergantung kontrak</td>
+      <td>24/7 (market hours kritis)</td>
+    </tr>
+    <tr>
+      <td>Kecepatan belajar</td>
+      <td>Cepat, beragam tech stack</td>
+      <td>Mendalam, spesialis domain</td>
+    </tr>
+    <tr>
+      <td>Ownership</td>
+      <td>Client-driven</td>
+      <td>Internal ownership penuh</td>
+    </tr>
+  </table>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE — DAILY TASK CSG
+══════════════════════════════════════ -->
+<section>
+  <h2>Daily Task di <span class="blue">CSG</span></h2>
+  <div class="card-grid">
+    <div>
+      <div class="card accent-blue" style="margin-bottom:0.7em;">
+        <h4>🌅 Rutin Harian</h4>
+        <ul class="checklist" style="font-size:0.9em;">
+          <li>Stand-up &amp; cek alert monitoring</li>
+          <li>Review infrastructure change request dari client</li>
+          <li>Monitoring dan optimasi biaya cloud bulanan</li>
+          <li>Update client / stakeholder</li>
+        </ul>
+      </div>
+      <div class="card accent-yellow">
+        <h4>⚡ Ad-hoc</h4>
+        <ul class="checklist" style="font-size:0.9em;">
+          <li>Incident response</li>
+          <li>Cost optimization</li>
+          <li>Security audit</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card accent-green">
+        <h4>📋 Tanggung Jawab Utama</h4>
+        <ul class="checklist" style="font-size:0.9em;">
+          <li>Provisioning infra untuk client</li>
+          <li>Manage multi-environment (dev/stg/prod)</li>
+          <li>On-call rotation</li>
+          <li>Client technical alignment meeting</li>
+          <li>Presentasi technical proposal ke client baru</li>
+        </ul>
+      </div>
+      <div class="callout" style="font-size:0.85em;">Stack: Azure, Terraform, Ansible, Jenkins, Docker, Kubernetes</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE — DAILY TASK AJAIB
+══════════════════════════════════════ -->
+<section>
+  <h2>Daily Task di <span class="green">Ajaib</span></h2>
+  <div class="card-grid">
+    <div>
+      <div class="card accent-green" style="margin-bottom:0.7em;">
+        <h4>🌅 Rutin Harian</h4>
+        <ul class="checklist" style="font-size:0.9em;">
+          <li>Stand-up, cek dashboard metrik transaksi</li>
+          <li>Monitor SLA/SLO (market 09.00–15.30)</li>
+          <li>Deploy dan release management microservices ke staging dan production</li>
+          <li>Release management microservices</li>
+        </ul>
+      </div>
+      <div class="card accent-red">
+        <h4>🚨 Ad-hoc</h4>
+        <ul class="checklist" style="font-size:0.9em;">
+          <li>P1 incident response</li>
+          <li>Capacity planning (market event)</li>
+          <li>Security patching &amp; compliance</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card accent-blue">
+        <h4>📋 Tanggung Jawab Utama</h4>
+        <ul class="checklist" style="font-size:0.9em;">
+          <li>Deploy &amp; release management</li>
+          <li>Database reliability &amp; backup</li>
+          <li>OJK/BI compliance readiness</li>
+          <li>Zero-downtime selama market hours</li>
+          <li>Audit kesiapan sistem sebelum event market besar seperti IPO atau stock rush</li>
+        </ul>
+      </div>
+      <div class="callout" style="font-size:0.85em;">Stack: GCP, Kubernetes, ArgoCD, Terraform, Helm, VictoriaMetrics, Grafana, Loki, Prometheus</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE — CERITA INSIDEN
+══════════════════════════════════════ -->
+<section>
+  <h2>Cerita dari <span class="red">Lapangan</span></h2>
+  <div class="card-grid">
+    <div class="card accent-blue">
+      <h4>📖 Cerita dari CSG</h4>
+      <p>Suatu hari Terraform apply di jam sibuk, satu security group terhapus. Semua traffic ke prod terblokir 20 menit sebelum ketahuan. Dari situ kita buat mandatory: semua terraform plan harus di-review dua orang sebelum apply ke production.</p>
+      <p class="muted" style="font-size:0.75em;">Lesson learned: Plan dulu, apply kemudian. Selalu ada reviewer kedua untuk production changes.</p>
+    </div>
+    <div class="card accent-green">
+      <h4>📖 Cerita dari Ajaib</h4>
+      <p>Sebuah typo konfigurasi pada automation job k6 menyebabkan proses tersebut mencoba melakukan SSH ke server di China. Sistem deteksi ancaman langsung memflagging aktivitas ini sebagai SSH Exfiltration. Akar masalahnya: perubahan dilakukan secara manual tanpa melalui proses code review, sehingga tidak ada yang menangkap kesalahan tersebut.</p>
+      <p class="muted" style="font-size:0.75em;">Lesson learned: Sekecil apapun perubahannya, selalu harus melalui proses review. Otomasi bukan hanya soal efisiensi, tapi juga soal keamanan dan auditabilitas—perubahan manual yang tidak terdokumentasi adalah risiko yang menunggu waktu.</p>
+    </div>
+  </div>
+  <div class="callout">"Post-mortem bukan tentang siapa yang salah. Ini tentang <em>sistem</em> yang gagal, dan bagaimana kita fix it."</div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE — GAJI & JENJANG
+══════════════════════════════════════ -->
+<section>
+  <h2>Gaji &amp; Jenjang Karir <span class="muted" style="font-size:0.7em;">(Indonesia, 2026)</span></h2>
+  <div class="stat-row">
+    <div class="stat-box">
+      <div class="stat-num" style="font-size:1.3em;">6–12jt</div>
+      <div class="stat-label">Junior (0–2 thn)</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num" style="font-size:1.3em;">12–22jt</div>
+      <div class="stat-label">Mid (2–4 thn)</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num" style="font-size:1.3em;">22–40jt</div>
+      <div class="stat-label">Senior (4–7 thn)</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num" style="font-size:1.3em;">40–70jt</div>
+      <div class="stat-label">Staff / Principal</div>
+    </div>
+  </div>
+  <h3 style="margin-top:0.8em;">Faktor yang naikkan gaji:</h3>
+  <div style="display:flex; gap:0.4em; flex-wrap:wrap; margin-top:0.3em;">
+    <span class="pill pill-blue">Cloud Certification</span>
+    <span class="pill pill-green">Fintech / Banking domain</span>
+    <span class="pill pill-yellow">English proficiency</span>
+    <span class="pill pill-purple">Kubernetes (CKA/CKAD)</span>
+    <span class="pill pill-red">Security expertise</span>
+    <span class="pill pill-blue">Company stage (scale-up)</span>
+  </div>
+  <p class="muted" style="font-size:0.68em; margin-top:0.8em;">Sumber: Glassdoor, LinkedIn Salary, komunitas DevOps Indonesia</p>
+</section>
+
+<!-- ══════════════════════════════════════
+     SECTION BREAK — MINI PROJECT
+══════════════════════════════════════ -->
+<section class="section-header">
+  <p class="muted mono" style="font-size:0.7em;">03</p>
+  <h2>Review Mini Project</h2>
+  <p class="section-sub">4 Studi Kasus, dilihat dari kacamata industri</p>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE — OVERVIEW 4 PROJECT
+══════════════════════════════════════ -->
+<section>
+  <h2>4 Studi Kasus</h2>
+  <div class="card-grid">
+    <div class="card accent-blue">
+      <div class="proj-badge"><span class="num">#1</span> HA Load Balancer</div>
+      <p>War tiket konser, server down tiap ada lonjakan traffic. Solusi: LB + 4 Workers + Docker + Terraform + Ansible.</p>
+    </div>
+    <div class="card accent-green">
+      <div class="proj-badge"><span class="num">#2</span> HA Database</div>
+      <p>E-commerce DB single point of failure. Solusi: ProxySQL + Master-Slave replication + SSL + backup otomatis.</p>
+    </div>
+    <div class="card accent-yellow">
+      <div class="proj-badge"><span class="num">#3</span> CI/CD Pipeline</div>
+      <p>Rilis manual = chaos. Solusi: Jenkins + GitHub + Docker Scout + Ansible + Jenkinsfile + notifikasi.</p>
+    </div>
+    <div class="card accent-purple">
+      <div class="proj-badge"><span class="num">#4</span> Observability Stack</div>
+      <p>Tidak tahu performa sebelum launch. Solusi: Prometheus + Grafana + k6 load testing 1.000 VUs.</p>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:0.7em;">Semua project punya benang merah: <span class="bold blue">Docker → Terraform → Ansible</span></div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE — PROJECT 1
+══════════════════════════════════════ -->
+<section>
+  <div class="proj-badge"><span class="num">#1</span> High Availability Load Balancer</div>
+  <h2>War Tiket Konser: Server Jangan Down</h2>
+  <div class="card-grid">
+    <div>
+      <div class="card accent-blue" style="margin-bottom:0.6em;">
+        <h4>Arsitektur</h4>
+        <pre style="font-size:0.75em; margin:0;">
+ Internet
+    │
+ [Load Balancer]  ← Nginx / HAProxy
+    ├──── [Worker 1: Frontend]
+    ├──── [Worker 2: Frontend]
+    ├──── [Worker 3: Backend]
+    └──── [Worker 4: Backend]</pre>
+      </div>
+      <div class="card accent-yellow">
+        <h4>Nilai Tambah</h4>
+        <p>Load testing k6: <strong>1.000 concurrent users</strong>. Validasi apakah LB benar-benar distribusi traffic.</p>
+      </div>
+    </div>
+    <div>
+      <div class="card accent-green">
+        <h4>3 Tahap</h4>
+        <ul class="checklist done">
+          <li><strong>Docker:</strong> Build image FE+BE, scan kerentanan (docker scout)</li>
+          <li><strong>Terraform:</strong> Provisioning 5 VM di Azure + VPC + firewall</li>
+          <li><strong>Ansible:</strong> Install Docker, setup LB (round robin)</li>
+        </ul>
+      </div>
+      <div class="callout" style="font-size:0.8em; margin-top:0.6em;">
+        Di Ajaib: "Ini persis skenario saat IPO stock rush, downtime = miliaran rupiah + teguran OJK"
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE — PROJECT 2
+══════════════════════════════════════ -->
+<section>
+  <div class="proj-badge"><span class="num">#2</span> HA Database + ProxySQL</div>
+  <h2>Database Jangan Jadi Single Point of Failure</h2>
+  <div class="card-grid">
+    <div>
+      <div class="card accent-green" style="margin-bottom:0.6em;">
+        <h4>Arsitektur</h4>
+        <pre style="font-size:0.75em; margin:0;">
+ App Node
+    │
+ [ProxySQL]  ← query router
+    ├── WRITE → [Master DB]
+    │               │ replikasi
+    └── READ  → [Slave 1] [Slave 2]</pre>
+      </div>
+      <div class="card accent-purple">
+        <h4>Nilai Tambah</h4>
+        <p>Health check otomatis: ProxySQL deteksi kalau slave/master gagal, tanpa downtime.</p>
+      </div>
+    </div>
+    <div>
+      <div class="card accent-blue">
+        <h4>3 Tahap</h4>
+        <ul class="checklist done">
+          <li><strong>Docker:</strong> App + ProxySQL image, security scan</li>
+          <li><strong>Terraform:</strong> 5 VMs + isolated network + firewall rules</li>
+          <li><strong>Ansible:</strong> MySQL replication, SSL/TLS, user least-privilege, backup cronjob</li>
+        </ul>
+      </div>
+      <div class="callout" style="font-size:0.8em; margin-top:0.6em;">
+        "Pattern ini identik dengan yang Ajaib pakai untuk database transaksi. Setiap rupiah harus konsisten"
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE — PROJECT 3
+══════════════════════════════════════ -->
+<section>
+  <div class="proj-badge"><span class="num">#3</span> CI/CD Pipeline + DevSecOps</div>
+  <h2>Dari Commit ke Production, Otomatis dan Aman</h2>
+  <div class="card-grid">
+    <div>
+      <div class="card accent-yellow" style="margin-bottom:0.6em;">
+        <h4>Pipeline Flow</h4>
+        <pre style="font-size:0.75em; margin:0;">
+ git push
+    │
+ [Jenkins]
+    ├── Build Docker image
+    ├── docker scout scan
+    │     └── CRITICAL/HIGH? → FAIL ❌
+    ├── Push ke Docker Hub
+    └── Deploy ke Worker Node ✅</pre>
+      </div>
+    </div>
+    <div>
+      <div class="card accent-red" style="margin-bottom:0.6em;">
+        <h4>Security di Pipeline (DevSecOps)</h4>
+        <ul class="checklist done">
+          <li>Scan image sebelum push ke registry</li>
+          <li>Pipeline gagal otomatis kalau ada CVE Critical/High</li>
+          <li>Traceability: commit ID → release version</li>
+        </ul>
+      </div>
+      <div class="card accent-blue">
+        <h4>Nilai Tambah</h4>
+        <ul class="checklist done">
+          <li>Rollback otomatis jika smoke test gagal</li>
+          <li>Notifikasi Slack/Email tiap deploy</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="callout">"Di Ajaib: ~50–100 deploy/minggu. Tanpa pipeline solid, chaos bisa terjadi kapan saja."</div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE — PROJECT 4
+══════════════════════════════════════ -->
+<section>
+  <div class="proj-badge"><span class="num">#4</span> Observability Stack</div>
+  <h2>Kalau Tidak Bisa Diukur, Tidak Bisa Diperbaiki</h2>
+  <div class="card-grid">
+    <div>
+      <div class="card accent-purple" style="margin-bottom:0.6em;">
+        <h4>Arsitektur Monitoring</h4>
+        <pre style="font-size:0.75em; margin:0;">
+ App Node
+    │ (metrics endpoint)
+ [Prometheus]  ← scrape
+    │
+ [Grafana]     ← visualize
+    │
+ [Alertmanager] ← alert rules</pre>
+      </div>
+      <div class="card accent-red">
+        <h4>Load Test dengan k6</h4>
+        <p><strong>1.000 virtual users × 5 menit</strong><br>Target: <span class="green">p95 latency &lt; 200ms</span></p>
+      </div>
+    </div>
+    <div>
+      <div class="card accent-blue">
+        <h4>Golden Signals (4 hal wajib monitor)</h4>
+        <ul class="checklist done">
+          <li><strong>Latency:</strong> seberapa lama request diproses</li>
+          <li><strong>Traffic:</strong> berapa banyak request masuk</li>
+          <li><strong>Errors:</strong> rate error yang terjadi</li>
+          <li><strong>Saturation:</strong> seberapa penuh resource</li>
+        </ul>
+      </div>
+      <div class="callout" style="font-size:0.8em; margin-top:0.5em;">
+        "Ajaib punya >200 Grafana dashboard. Monitoring bukan optional. Ini survival."
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE — SARAN MINI PROJECT
+══════════════════════════════════════ -->
+<section>
+  <h2>Yang Bikin Nilai Tinggi <span class="muted">(dari perspektif industri)</span></h2>
+  <div class="card-grid">
+    <div>
+      <div class="card accent-green" style="margin-bottom:0.6em;">
+        <h4>✅ DO ini</h4>
+        <ul class="checklist done">
+          <li>README yang jelas, setup kurang dari 5 menit</li>
+          <li>Terraform pakai modules + variables</li>
+          <li>Ansible roles yang reusable</li>
+          <li>Security scan diaddress, bukan di-ignore</li>
+          <li>Video demo yang terstruktur</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card accent-red">
+        <h4>❌ AVOID ini</h4>
+        <ul class="checklist warn">
+          <li>Hardcode credentials di repository</li>
+          <li>Terraform state disimpan locally</li>
+          <li>Tidak ada arsitektur diagram</li>
+          <li>Pipeline yang tidak pernah gagal = tidak ada test</li>
+          <li>Commit dengan pesan "fix" atau "update"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:0.7em;">
+    "Reviewer industri yang buka repo kamu: <em>kalau dalam 2 menit tidak ngerti cara jalankannya, langsung skip.</em>"
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SECTION BREAK — ERA AI
+══════════════════════════════════════ -->
+<section class="section-header">
+  <p class="muted mono" style="font-size:0.7em;">04</p>
+  <h2>DevOps Dulu vs Sekarang</h2>
+  <p class="section-sub">Era AI &amp; Automation yang semakin masif</p>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE — EVOLUSI
+══════════════════════════════════════ -->
+<section>
+  <h2>Evolusi DevOps</h2>
+  <div class="htimeline">
+    <div class="htimeline-item" data-year="2009">
+      <div class="htl-content">DevOps lahir<br><span class="muted">Flickr "10 deploys/day"</span></div>
+    </div>
+    <div class="htimeline-item" data-year="2013">
+      <div class="htl-content">Docker<br><span class="muted">Container revolution</span></div>
+    </div>
+    <div class="htimeline-item" data-year="2015">
+      <div class="htl-content">Kubernetes<br><span class="muted">Orchestration era</span></div>
+    </div>
+    <div class="htimeline-item" data-year="2018">
+      <div class="htl-content">GitOps + IaC<br><span class="muted">mainstream</span></div>
+    </div>
+    <div class="htimeline-item" data-year="2022">
+      <div class="htl-content">ChatGPT<br><span class="muted">AI masuk industri</span></div>
+    </div>
+    <div class="htimeline-item" data-year="2024">
+      <div class="htl-content">AI Agents<br><span class="muted">automate toil</span></div>
+    </div>
+    <div class="htimeline-item" data-year="2026">
+      <div class="htl-content" style="border-color: var(--blue);">Platform Eng<br><span class="blue">+ AI = self-service</span></div>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:0.8em;">Tren: makin abstrak, makin otomatis, makin cepat. Dan makin dibutuhkan orang yang paham fundamentalnya</div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE — SEBELUM VS SESUDAH AI
+══════════════════════════════════════ -->
+<section>
+  <h2>Sebelum vs Sesudah <span class="blue">AI</span></h2>
+  <table class="compare-table">
+    <tr>
+      <th>Task</th>
+      <th>Pre-AI (sebelum 2022)</th>
+      <th>AI Era (sekarang)</th>
+    </tr>
+    <tr>
+      <td>Tulis Terraform</td>
+      <td>Manual, buka docs</td>
+      <td class="green">Copilot suggest, review sendiri</td>
+    </tr>
+    <tr>
+      <td>Debugging</td>
+      <td>Google + Stack Overflow</td>
+      <td class="green">Tanya Claude/GPT, analisis cepat</td>
+    </tr>
+    <tr>
+      <td>Analisis log</td>
+      <td>Manual grep + mata lelah</td>
+      <td class="green">Datadog AI root cause analysis</td>
+    </tr>
+    <tr>
+      <td>Onboarding</td>
+      <td>3–6 bulan baru produktif</td>
+      <td class="green">AI-assisted: 1–2 bulan</td>
+    </tr>
+    <tr>
+      <td>Runbook</td>
+      <td>Dokumen statis, sering outdated</td>
+      <td class="green">AI-generated runbook otomatis</td>
+    </tr>
+    <tr>
+      <td>Alert triage</td>
+      <td>Manusia analisa satu per satu</td>
+      <td class="green">AIOps auto-correlate + suggest fix</td>
+    </tr>
+  </table>
+  <div class="callout" style="margin-top:0.6em;">
+    <span class="bold">"AI tidak menggantikan DevOps engineer. AI menggantikan DevOps engineer yang <em>tidak pakai</em> AI."</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE — PLATFORM ENGINEERING
+══════════════════════════════════════ -->
+<section>
+  <h2>Platform Engineering</h2>
+  <div class="before-after" style="margin-bottom:0.8em;">
+    <div class="before-side">
+      <h4>😫 Dulu</h4>
+      <p>Developer buka tiket ke DevOps<br>→ Tunggu 2–3 hari<br>→ Back-and-forth requirement<br>→ Baru dapat akses / resource</p>
+    </div>
+    <div class="after-side">
+      <h4>😎 Sekarang (IDP)</h4>
+      <p>Developer buka self-service portal<br>→ Pilih template<br>→ Deploy sendiri dalam hitungan menit<br>→ DevOps fokus build platformnya</p>
+    </div>
+  </div>
+  <div class="card-grid-3" style="font-size:0.78em;">
+    <div class="card accent-blue center">
+      <h4>Backstage</h4>
+      <p class="muted">Service catalog by Spotify</p>
+    </div>
+    <div class="card accent-green center">
+      <h4>Atlantis</h4>
+      <p class="muted">GitOps for Terraform</p>
+    </div>
+    <div class="card accent-purple center">
+      <h4>Crossplane</h4>
+      <p class="muted">Cloud resources as K8s objects</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SECTION BREAK — PROSPEK
+══════════════════════════════════════ -->
+<section class="section-header">
+  <p class="muted mono" style="font-size:0.7em;">05</p>
+  <h2>Prospek Karir</h2>
+  <p class="section-sub">Ke mana arah DevOps Engineer 5 tahun ke depan</p>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE — JOB MARKET
+══════════════════════════════════════ -->
+<section>
+  <h2>Job Market DevOps <span class="muted" style="font-size:0.7em;">2026</span></h2>
+  <div class="stat-row" style="margin-bottom:0.8em;">
+    <div class="stat-box">
+      <div class="stat-num">Top 5</div>
+      <div class="stat-label">IT jobs demand Indonesia</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">17%</div>
+      <div class="stat-label">Cloud market CAGR/year (global)</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">$130K</div>
+      <div class="stat-label">Median salary US/year</div>
+    </div>
+  </div>
+  <h3>Skill paling dicari (LinkedIn Indonesia):</h3>
+  <div style="display:flex; flex-wrap:wrap; gap:0.4em; margin-top:0.4em;">
+    <span class="pill pill-blue">Kubernetes</span>
+    <span class="pill pill-green">Terraform</span>
+    <span class="pill pill-yellow">AWS / GCP</span>
+    <span class="pill pill-red">CI/CD</span>
+    <span class="pill pill-purple">Docker</span>
+    <span class="pill pill-blue">Python / Go scripting</span>
+    <span class="pill pill-green">Observability</span>
+    <span class="pill pill-yellow">Security (DevSecOps)</span>
+  </div>
+  <div class="callout" style="margin-top:0.8em;">
+    Indonesia: Fintech boom + Bank BUMN digital transformasi + startup ecosystem = demand tinggi, supply masih terbatas
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE — WILL AI REPLACE
+══════════════════════════════════════ -->
+<section>
+  <h2>Apakah AI Akan Menggantikan DevOps?</h2>
+  <div class="before-after">
+    <div class="before-side">
+      <h4>❌ Yang akan ter-automate</h4>
+      <ul class="checklist warn">
+        <li>Menulis boilerplate Terraform</li>
+        <li>Copy-paste dari runbook</li>
+        <li>Basic ticket resolution (L1 ops)</li>
+        <li>Writing deployment scripts</li>
+        <li>Dokumentasi dari kode yang sudah ada</li>
+      </ul>
+    </div>
+    <div class="after-side">
+      <h4>✅ Yang tetap butuh manusia</h4>
+      <ul class="checklist done">
+        <li>Architecture decision + trade-off</li>
+        <li>Incident commander saat chaos</li>
+        <li>Stakeholder communication</li>
+        <li>Security judgment call</li>
+        <li>Building culture &amp; processes</li>
+        <li>Context-aware debugging</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:0.7em;">
+    <span class="bold">"AI adalah junior engineer yang tidak pernah lelah.<br>Kamu adalah senior yang tahu apa yang penting."</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE — ROADMAP 12 BULAN
+══════════════════════════════════════ -->
+<section>
+  <h2>Roadmap <span class="blue">12 Bulan</span> Pertama</h2>
+  <div class="card-grid-3">
+    <div class="card accent-blue">
+      <h4>Bulan 1–3<br><span class="muted" style="font-weight:400;">Foundation</span></h4>
+      <ul class="checklist" style="font-size:0.85em;">
+        <li>Linux: filesystem, process, network</li>
+        <li>Git: branching, merge, rebase</li>
+        <li>Docker: build, compose, registry</li>
+        <li>Bash scripting dasar</li>
+      </ul>
+    </div>
+    <div class="card accent-green">
+      <h4>Bulan 4–6<br><span class="muted" style="font-weight:400;">Cloud &amp; IaC</span></h4>
+      <ul class="checklist" style="font-size:0.85em;">
+        <li>Pilih 1 cloud (AWS free tier)</li>
+        <li>Terraform: deploy simple infra</li>
+        <li>CI/CD: GitHub Actions pipeline</li>
+        <li>Ansible: konfigurasi otomatis</li>
+      </ul>
+    </div>
+    <div class="card accent-purple">
+      <h4>Bulan 7–12<br><span class="muted" style="font-weight:400;">Portfolio</span></h4>
+      <ul class="checklist" style="font-size:0.85em;">
+        <li>Kubernetes: minikube / k3s</li>
+        <li>Monitoring: Prometheus + Grafana</li>
+        <li>Build 1–2 project end-to-end</li>
+        <li>Dokumentasikan di GitHub</li>
+        <li>Tulis blog di Medium / dev.to</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:0.7em;">"Mini project yang kalian kerjakan sekarang <span class="bold green">sudah setara portfolio entry-level</span>. Tinggal dokumentasikan dengan baik."</div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SECTION BREAK — QnA
+══════════════════════════════════════ -->
+<section class="section-header">
+  <p class="muted mono" style="font-size:0.7em;">06</p>
+  <h2>Q&amp;A</h2>
+  <p class="section-sub">Ada yang ingin ditanyakan?</p>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE — QnA TOPICS
+══════════════════════════════════════ -->
+<section>
+  <h2>Topik yang Bisa Dieksplor</h2>
+  <div class="card-grid">
+    <div class="card accent-blue">
+      <h4>💼 Karir &amp; Gaji</h4>
+      <ul class="checklist" style="font-size:0.85em;">
+        <li>Bagaimana memulai karir di DevOps?</li>
+        <li>Sertifikasi apa yang paling worth it?</li>
+        <li>Fresh grad bisa langsung jadi DevOps?</li>
+      </ul>
+    </div>
+    <div class="card accent-green">
+      <h4>🛠️ Tools &amp; Skill</h4>
+      <ul class="checklist" style="font-size:0.85em;">
+        <li>Belajar dari mana yang paling efektif?</li>
+        <li>Tool mana yang harus dikuasai duluan?</li>
+        <li>Wajib bisa coding?</li>
+      </ul>
+    </div>
+    <div class="card accent-yellow">
+      <h4>🏢 Dunia Kerja</h4>
+      <ul class="checklist" style="font-size:0.85em;">
+        <li>Perbedaan startup vs corporate?</li>
+        <li>Gimana rasanya on-call jam 3 pagi?</li>
+        <li>Portfolio seperti apa yang dilirik rekruter?</li>
+      </ul>
+    </div>
+    <div class="card accent-purple">
+      <h4>🤖 AI &amp; Masa Depan</h4>
+      <ul class="checklist" style="font-size:0.85em;">
+        <li>AI tools apa yang kalian pakai sehari-hari?</li>
+        <li>Skill apa yang tetap relevan di era AI?</li>
+        <li>Ke mana arah DevOps 5 tahun ke depan?</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:0.7em;">"Tidak ada pertanyaan yang terlalu bodoh. Pertanyaan yang tidak ditanyakan itu yang sayang."</div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE — PENUTUP
+══════════════════════════════════════ -->
+<section class="cover">
+  <h1 style="font-size:1.8em;">3 Hal yang Semoga Kalian Bawa Pulang</h1>
+  <div style="text-align:left; max-width:600px; margin:1.2em auto 0;">
+    <div class="card accent-blue" style="margin-bottom:0.6em; font-size:0.85em;">
+      <strong class="blue">1.</strong> DevOps bukan tentang tools, tapi tentang <strong>mindset kolaborasi &amp; automation</strong>
+    </div>
+    <div class="card accent-green" style="margin-bottom:0.6em; font-size:0.85em;">
+      <strong class="green">2.</strong> Learning never stops. Tapi <strong>mulai sekarang</strong>, dari project yang kalian punya
+    </div>
+    <div class="card accent-purple" style="font-size:0.85em;">
+      <strong class="purple">3.</strong> AI adalah <strong>multiplier</strong>, bukan pengganti. Yang mau adapt, yang survive.
+    </div>
+  </div>
+  <hr class="sep" style="margin:1.2em auto; max-width:400px;">
+  <div class="speakers" style="margin-top:0.8em;">
+    <div class="speaker-card">
+      <div class="role">LinkedIn / Email</div>
+      <div class="name">Nama Lengkap Kamu</div>
+      <div class="company">linkedin.com/in/username  |  email@gmail.com</div>
+    </div>
+    <div class="speaker-card">
+      <div class="role">LinkedIn / Email</div>
+      <div class="name">Cahya P. Hikmawan</div>
+      <div class="company">linkedin.com/in/cphikmawan  |  cp.hikmawan@gmail.com</div>
+    </div>
+  </div>
+  <p class="muted" style="font-size:0.65em; margin-top:1em;">"Kalau stuck, DM kami. Kita komunitas, bukan kompetisi."</p>
+</section>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: 'c/t',
+    transition: 'fade',
+    transitionSpeed: 'fast',
+    backgroundTransition: 'none',
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.0,
+    minScale: 0.2,
+    maxScale: 2.0,
+    disableLayout: false,
+    plugins: [ RevealHighlight, RevealNotes ],
+  });
+</script>
 </body>
 </html>
