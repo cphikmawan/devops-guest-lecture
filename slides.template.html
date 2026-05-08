@@ -490,16 +490,16 @@
   <h2>Perjalanan <span class="green">Pemateri B</span> di Ajaib</h2>
   <div class="timeline">
     <div class="timeline-item">
-      <span class="year">{{A_YEAR_1}}</span>
-      <span style="font-size:0.9em; margin-left:0.5em;">Mulai kuliah, jurusan {{A_MAJOR}}</span>
+      <span class="year">{{B_YEAR_1}}</span>
+      <span style="font-size:0.9em; margin-left:0.5em;">Mulai kuliah, jurusan {{B_MAJOR}} — ITS Surabaya</span>
     </div>
     <div class="timeline-item">
       <span class="year">{{B_YEAR_2}}</span>
       <span style="font-size:0.9em; margin-left:0.5em;">Pertama kali kenal DevOps, dari {{B_DEVOPS_FROM}}</span>
     </div>
     <div class="timeline-item">
-      <span class="year">{{A_YEAR_3}}</span>
-      <span style="font-size:0.9em; margin-left:0.5em;">Internship / project pertama: {{A_INTERN_STORY}}</span>
+      <span class="year">{{B_YEAR_3}}</span>
+      <span style="font-size:0.9em; margin-left:0.5em;">Bergabung <span class="blue bold">Tiket.com</span> sebagai DevOps Engineer</span>
     </div>
     <div class="timeline-item">
       <span class="year">{{B_YEAR_4}}</span>
@@ -593,7 +593,7 @@
     <tr>
       <td>Model bisnis</td>
       <td>Multi-client, project-based</td>
-      <td>Single product, B2C</td>
+      <td>Multi product, B2C</td>
     </tr>
     <tr>
       <td>Scope kerja</td>
@@ -613,7 +613,7 @@
     <tr>
       <td>Kecepatan belajar</td>
       <td>Cepat, beragam tech stack</td>
-      <td>Mendalam, spesialis domain</td>
+      <td>Fast-paced, multi domain finansial</td>
     </tr>
     <tr>
       <td>Ownership</td>
@@ -829,7 +829,7 @@
         </ul>
       </div>
       <div class="callout" style="font-size:0.8em; margin-top:0.6em;">
-        Di Ajaib: "Ini persis skenario saat IPO stock rush, downtime = miliaran rupiah + teguran OJK"
+        Di Ajaib: "Ini persis skenario saat eIPO—contohnya SUPA (Superbank). Downtime = miliaran rupiah + teguran OJK"
       </div>
     </div>
   </div>
@@ -866,9 +866,6 @@
           <li><strong>Terraform:</strong> 5 VMs + isolated network + firewall rules</li>
           <li><strong>Ansible:</strong> MySQL replication, SSL/TLS, user least-privilege, backup cronjob</li>
         </ul>
-      </div>
-      <div class="callout" style="font-size:0.8em; margin-top:0.6em;">
-        "Pattern ini identik dengan yang Ajaib pakai untuk database transaksi. Setiap rupiah harus konsisten"
       </div>
     </div>
   </div>
@@ -913,7 +910,10 @@
       </div>
     </div>
   </div>
-  <div class="callout">"Di Ajaib: ~50–100 deploy/minggu. Tanpa pipeline solid, chaos bisa terjadi kapan saja."</div>
+  <div style="display:flex; gap:0.6em; margin-top:0.6em;">
+    <div class="callout" style="flex:1; margin:0; font-size:0.78em;">"Di CSG: {{A_CICD_STORY}}"</div>
+    <div class="callout" style="flex:1; margin:0; font-size:0.78em; border-left-color:var(--green);">"Di Ajaib: ~50–100 deploy/minggu. Tanpa pipeline solid, chaos bisa terjadi kapan saja."</div>
+  </div>
 </section>
 
 <!-- ══════════════════════════════════════
@@ -950,8 +950,9 @@
           <li><strong>Saturation:</strong> seberapa penuh resource</li>
         </ul>
       </div>
-      <div class="callout" style="font-size:0.8em; margin-top:0.5em;">
-        "Ajaib punya >200 Grafana dashboard. Monitoring bukan optional. Ini survival."
+      <div style="display:flex; flex-direction:column; gap:0.35em; margin-top:0.5em;">
+        <div class="callout" style="margin:0; font-size:0.75em;">"Di CSG: {{A_OBSERVABILITY_STORY}}"</div>
+        <div class="callout" style="margin:0; font-size:0.75em; border-left-color:var(--green);">"Ajaib punya puluhan Grafana dashboard. Monitoring bukan optional. Ini survival."</div>
       </div>
     </div>
   </div>

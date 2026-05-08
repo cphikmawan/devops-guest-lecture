@@ -20,7 +20,7 @@
 
   "B_DAILY_1": "Deploy dan release management microservices ke staging dan production",
   "B_SPECIFIC": "Audit kesiapan sistem sebelum event market besar seperti IPO atau stock rush",
-  "B_STACK": "GCP, Kubernetes, ArgoCD, Terraform, Helm, VictoriaMetrics, Grafana, Loki, Prometheus",
+  "B_STACK": "GCP, Kubernetes, ArgoCD, Terraform, Helm, CortexMetrics, Grafana, Loki, Prometheus, Jenkins, GitHub Actions",
 
   "B_INCIDENT": "Sebuah typo konfigurasi pada automation job k6 menyebabkan proses tersebut mencoba melakukan SSH ke server di China. Sistem deteksi ancaman langsung memflagging aktivitas ini sebagai SSH Exfiltration. Akar masalahnya: perubahan dilakukan secara manual tanpa melalui proses code review, sehingga tidak ada yang menangkap kesalahan tersebut.",
 

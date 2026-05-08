@@ -26,5 +26,8 @@
   "A_STACK": "Azure, Terraform, Ansible, Jenkins, Docker, Kubernetes",
 
   "A_INCIDENT": "Suatu hari Terraform apply di jam sibuk, satu security group terhapus. Semua traffic ke prod terblokir 20 menit sebelum ketahuan. Dari situ kita buat mandatory: semua terraform plan harus di-review dua orang sebelum apply ke production.",
-  "A_LESSON": "Plan dulu, apply kemudian. Selalu ada reviewer kedua untuk production changes."
+  "A_LESSON": "Plan dulu, apply kemudian. Selalu ada reviewer kedua untuk production changes.",
+
+  "A_CICD_STORY": "[cerita CI/CD dari CSG — diisi pemateri]",
+  "A_OBSERVABILITY_STORY": "[cerita observability dari CSG — diisi pemateri]"
 }
