@@ -1,33 +1,33 @@
 {
-  "_instruksi": "Isi semua field di bawah ini. Hapus baris '_instruksi' ini setelah selesai. Jalankan: python3 generate.py",
+  "A_NAME": "Muhammad Faris Didin Andiyar",
+  "A_CONTACT": "linkedin.com/in/farisdidin  |  faris.didin23@gmail.com",
 
-  "A_NAME": "Nama Lengkap Kamu",
-  "A_CONTACT": "linkedin.com/in/username  |  email@gmail.com",
-
-  "A_YEAR_1": "2018",
+  "A_YEAR_1": "2015",
   "A_MAJOR": "Teknik Informatika",
 
   "A_YEAR_2": "2019",
-  "A_LINUX_STORY": "Pertama kali otak-atik Linux di lab kampus, langsung ketagihan",
+  "A_LINUX_STORY": "Tugas akhir tentang manage router config menggunakan versioning system Git",
 
   "A_YEAR_3": "2020",
-  "A_INTERN_STORY": "Internship di startup, deploy pertama pakai FTP manual",
+  "A_INTERN_STORY": "System Engineer di Dinas Pendidikan Kota Surabaya",
 
-  "A_YEAR_4": "2021",
-  "A_ROLE_JOIN": "Junior DevOps Engineer",
+  "A_YEAR_4": "2022",
+  "A_ROLE_JOIN": "Operational Engineer",
 
-  "A_ROLE_NOW": "DevOps Engineer, handle infra untuk 5 client sekaligus",
+  "A_ROLE_NOW": "Operational Engineer, handle infra untuk 9 client sekaligus",
 
   "A_AHA_MOMENT": "Pertama kali pipeline CI/CD jalan otomatis jam 2 pagi, tidak perlu SSH manual lagi",
 
   "A_DAILY_1": "Review infrastructure change request dari client",
-  "A_DAILY_2": "Monitoring dan optimasi biaya cloud bulanan",
-  "A_SPECIFIC": "Presentasi technical proposal ke client baru",
-  "A_STACK": "Azure, Terraform, Ansible, Jenkins, Docker, Kubernetes",
+  "A_DAILY_2": "Troubleshoot production issues dan coordinate dengan tim engineering",
+  "A_SPECIFIC": "Monitoring dan optimasi biaya cloud bulanan",
+  "A_STACK": "AWS, Terraform, Ansible, Jenkins, Docker, Kubernetes, Teamicity, Grafana, Prometheus, Loki, Helm",
 
-  "A_INCIDENT": "Suatu hari Terraform apply di jam sibuk, satu security group terhapus. Semua traffic ke prod terblokir 20 menit sebelum ketahuan. Dari situ kita buat mandatory: semua terraform plan harus di-review dua orang sebelum apply ke production.",
-  "A_LESSON": "Plan dulu, apply kemudian. Selalu ada reviewer kedua untuk production changes.",
+  "A_INCIDENT": "Suatu hari upgrade cluster Kubernetes terdapat step yang tidak perlu dilakukan sehingga menyebabkan breaking change yang belum di support aplikasi yang ada. Akar masalahnya adalah human error karena kurangnya dokumentasi dan checklist yang lengkap untuk upgrade cluster",
+  "A_LESSON": "Dokumentasi dan checklist yang lengkap sangat penting untuk mencegah human error, terutama saat melakukan perubahan besar seperti upgrade cluster",
 
-  "A_CICD_STORY": "[cerita CI/CD dari CSG — diisi pemateri]",
-  "A_OBSERVABILITY_STORY": "[cerita observability dari CSG — diisi pemateri]"
+  "A_CICD_STORY": "Jenkins pipeline kami handle ~30 deploy/bulan ke berbagai environment. Setiap kali ada CVE, security scan bisa catch sebelum deploy ke production",
+
+  "A_OBSERVABILITY_STORY": "Dengan Prometheus + Grafana, kita bisa quick identify kalau ada client yang traffic-nya spike. Dari sana bisa adjust load balancer settings secara proaktif"
+
 }
