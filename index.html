@@ -414,7 +414,7 @@
   <div class="speakers">
     <div class="speaker-card">
       <div class="role">DevOps Engineer</div>
-      <div class="name">Nama Lengkap Kamu</div>
+      <div class="name">Muhammad Faris Didin Andiyar</div>
       <div class="company">CSG</div>
     </div>
     <div class="speaker-card">
@@ -460,24 +460,24 @@
   <h2>Perjalanan <span class="blue">Pemateri A</span> di CSG</h2>
   <div class="timeline">
     <div class="timeline-item">
-      <span class="year">2018</span>
+      <span class="year">2015</span>
       <span style="font-size:0.9em; margin-left:0.5em;">Mulai kuliah, jurusan Teknik Informatika</span>
     </div>
     <div class="timeline-item">
       <span class="year">2019</span>
-      <span style="font-size:0.9em; margin-left:0.5em;">Pertama kali otak-atik Linux di lab kampus, langsung ketagihan</span>
+      <span style="font-size:0.9em; margin-left:0.5em;">Tugas akhir tentang manage router config menggunakan versioning system Git</span>
     </div>
     <div class="timeline-item">
       <span class="year">2020</span>
-      <span style="font-size:0.9em; margin-left:0.5em;">Internship / project pertama: Internship di startup, deploy pertama pakai FTP manual</span>
+      <span style="font-size:0.9em; margin-left:0.5em;">Internship / project pertama: System Engineer di Dinas Pendidikan Kota Surabaya</span>
     </div>
     <div class="timeline-item">
-      <span class="year">2021</span>
-      <span style="font-size:0.9em; margin-left:0.5em;">Bergabung <span class="blue bold">CSG</span> sebagai Junior DevOps Engineer</span>
+      <span class="year">2022</span>
+      <span style="font-size:0.9em; margin-left:0.5em;">Bergabung <span class="blue bold">CSG</span> sebagai Operational Engineer</span>
     </div>
     <div class="timeline-item" style="border-left: 2px solid var(--blue);">
       <span class="year" style="color:var(--blue);">Now</span>
-      <span style="font-size:0.9em; margin-left:0.5em;">Role sekarang: DevOps Engineer, handle infra untuk 5 client sekaligus</span>
+      <span style="font-size:0.9em; margin-left:0.5em;">Role sekarang: Operational Engineer, handle infra untuk 9 client sekaligus</span>
     </div>
   </div>
   <div class="callout">"Aha moment pertama: Pertama kali pipeline CI/CD jalan otomatis jam 2 pagi, tidak perlu SSH manual lagi"</div>
@@ -635,7 +635,7 @@
         <ul class="checklist" style="font-size:0.9em;">
           <li>Stand-up &amp; cek alert monitoring</li>
           <li>Review infrastructure change request dari client</li>
-          <li>Monitoring dan optimasi biaya cloud bulanan</li>
+          <li>Troubleshoot production issues dan coordinate dengan tim engineering</li>
           <li>Update client / stakeholder</li>
         </ul>
       </div>
@@ -656,10 +656,10 @@
           <li>Manage multi-environment (dev/stg/prod)</li>
           <li>On-call rotation</li>
           <li>Client technical alignment meeting</li>
-          <li>Presentasi technical proposal ke client baru</li>
+          <li>Monitoring dan optimasi biaya cloud bulanan</li>
         </ul>
       </div>
-      <div class="callout" style="font-size:0.85em;">Stack: Azure, Terraform, Ansible, Jenkins, Docker, Kubernetes</div>
+      <div class="callout" style="font-size:0.85em;">Stack: AWS, Terraform, Ansible, Jenkins, Docker, Kubernetes, Teamicity, Grafana, Prometheus, Loki, Helm</div>
     </div>
   </div>
 </section>
@@ -713,8 +713,8 @@
   <div class="card-grid">
     <div class="card accent-blue">
       <h4>📖 Cerita dari CSG</h4>
-      <p>Suatu hari Terraform apply di jam sibuk, satu security group terhapus. Semua traffic ke prod terblokir 20 menit sebelum ketahuan. Dari situ kita buat mandatory: semua terraform plan harus di-review dua orang sebelum apply ke production.</p>
-      <p class="muted" style="font-size:0.75em;">Lesson learned: Plan dulu, apply kemudian. Selalu ada reviewer kedua untuk production changes.</p>
+      <p>Suatu hari upgrade cluster Kubernetes terdapat step yang tidak perlu dilakukan sehingga menyebabkan breaking change yang belum di support aplikasi yang ada. Akar masalahnya adalah human error karena kurangnya dokumentasi dan checklist yang lengkap untuk upgrade cluster</p>
+      <p class="muted" style="font-size:0.75em;">Lesson learned: Dokumentasi dan checklist yang lengkap sangat penting untuk mencegah human error, terutama saat melakukan perubahan besar seperti upgrade cluster</p>
     </div>
     <div class="card accent-green">
       <h4>📖 Cerita dari Ajaib</h4>
@@ -911,7 +911,7 @@
     </div>
   </div>
   <div style="display:flex; gap:0.6em; margin-top:0.6em;">
-    <div class="callout" style="flex:1; margin:0; font-size:0.78em;">"Di CSG: [cerita CI/CD dari CSG — diisi pemateri]"</div>
+    <div class="callout" style="flex:1; margin:0; font-size:0.78em;">"Di CSG: Jenkins pipeline kami handle ~30 deploy/bulan ke berbagai environment. Setiap kali ada CVE, security scan bisa catch sebelum deploy ke production"</div>
     <div class="callout" style="flex:1; margin:0; font-size:0.78em; border-left-color:var(--green);">"Di Ajaib: ~50–100 deploy/minggu. Tanpa pipeline solid, chaos bisa terjadi kapan saja."</div>
   </div>
 </section>
@@ -951,7 +951,7 @@
         </ul>
       </div>
       <div style="display:flex; flex-direction:column; gap:0.35em; margin-top:0.5em;">
-        <div class="callout" style="margin:0; font-size:0.75em;">"Di CSG: [cerita observability dari CSG — diisi pemateri]"</div>
+        <div class="callout" style="margin:0; font-size:0.75em;">"Di CSG: Dengan Prometheus + Grafana, kita bisa quick identify kalau ada client yang traffic-nya spike. Dari sana bisa adjust load balancer settings secara proaktif"</div>
         <div class="callout" style="margin:0; font-size:0.75em; border-left-color:var(--green);">"Ajaib punya puluhan Grafana dashboard. Monitoring bukan optional. Ini survival."</div>
       </div>
     </div>
@@ -1310,8 +1310,8 @@
   <div class="speakers" style="margin-top:0.4em;">
     <div class="speaker-card">
       <div class="role">LinkedIn / Email</div>
-      <div class="name">Nama Lengkap Kamu</div>
-      <div class="company">linkedin.com/in/username  |  email@gmail.com</div>
+      <div class="name">Muhammad Faris Didin Andiyar</div>
+      <div class="company">linkedin.com/in/farisdidin  |  faris.didin23@gmail.com</div>
     </div>
     <div class="speaker-card">
       <div class="role">LinkedIn / Email</div>
